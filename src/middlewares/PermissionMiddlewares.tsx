@@ -11,13 +11,13 @@ type Props = {
 export const PermissionMiddleware = ({children, codename}: Props) => {
     const navigate = useNavigate();
 
-    const {handlePermissionExist} = useAuth();
+    const {handlePermissionExists} = useAuth();
 
     const handleRefreshPage = () =>{
         navigate(0)
     }
 
-    if (!handlePermissionExist(codename)){
+    if (!handlePermissionExists(codename)){
         return (
             <Container maxWidth='sm' sx={{mt:16}}>
                 <Box textAlign='center'>

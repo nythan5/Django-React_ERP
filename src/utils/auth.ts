@@ -40,15 +40,21 @@ export const useAuth = () => {
 
     const handleSignIn = async (email: string, password: string) => {
         const response = await signIn({ email, password });
-
+    
         if (!response.detail) {
-            dispatch(setUser(response.data.user))
-            dispatch(setUserEnterprise(response.data.enterprise))
-
+            dispatch(setUser(response.data.user));
+            dispatch(setUserEnterprise(response.data.enterprise));
+    
             // Save token access
             localStorage.setItem(LOCAL_STORAGE_KEY, response.data.access);
+
+    
+            return { success: true }; // Retorna sucesso explicitamente
+        } else {
+            return { success: false, error: response.detail };
         }
-    }
+    };
+    
 
     const handleSignOut = () => {
         dispatch(setUser(null));

@@ -10,10 +10,10 @@ type Props = {
 export const AuthMiddleware = ({children}:Props) => {
     const navigate = useNavigate();
     
-    const { islogged } = useAuth();
+    const { isLogged } = useAuth();
 
     useEffect (() => {
-        if(!islogged) navigate('/signin')
+        if(!isLogged) navigate('/signin')
     }, [])
 
     return (

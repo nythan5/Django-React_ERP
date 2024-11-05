@@ -16,7 +16,7 @@ export const useApi = async <TypeDataResponse>(
     let headers = {};
 
     if (withAuth && access_token){
-        headers['Autorization'] = `Bearer ${access_token}`
+        headers['Authorization'] = `Bearer ${access_token}`;
     }
 
 
