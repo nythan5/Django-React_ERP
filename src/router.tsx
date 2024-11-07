@@ -7,6 +7,7 @@ import BaseLayout from 'src/layouts/BaseLayout';
 
 import SuspenseLoader from 'src/components/SuspenseLoader';
 
+
 const Loader = (Component) => (props) =>
   (
     <Suspense fallback={<SuspenseLoader />}>
@@ -16,6 +17,17 @@ const Loader = (Component) => (props) =>
 
 // Auth
 const SignIn = Loader(lazy (() => import('src/content/pages/Auth/SignIn')));
+
+// Groups
+const Groups = Loader(lazy (() => import ('src/content/pages/Groups/Groups')));
+const AddGroup = Loader(lazy (() => import ('src/content/pages/Groups/Add')));
+const EditGroup = Loader(lazy (() => import ('src/content/pages/Groups/Edit')));
+
+// Employees
+const Employees = Loader(lazy (() => import ('src/content/pages/Employees/Employees')));
+const ADDEmployee = Loader(lazy (() => import ('src/content/pages/Employees/Add')));
+
+
 
 // Pages
 
@@ -88,6 +100,41 @@ const routes: RouteObject[] = [
       {
         path:'/signin',
         element: <SignIn/>
+      },
+      // Groups
+      {
+        path:'',
+        element: <SidebarLayout/>,
+        children:[
+          {
+            path:'groups',
+            element: <Groups/>
+          },
+          {
+            path:'groups-add',
+            element: <AddGroup/>
+          },
+          {
+            path:'groups-edit/:id',
+            element: <EditGroup/>
+          }
+
+        ]
+      },
+      // Employees
+      {
+        path:'',
+        element: <SidebarLayout/>,
+        children:[
+          {
+            path:'employees',
+            element: <Employees/>
+          },
+          {
+            path:'employee-add',
+            element: <ADDEmployee/>
+          }
+        ]
       },
       {
         path: '/',

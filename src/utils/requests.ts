@@ -34,17 +34,17 @@ const getAnGroup = async (id: number) => {
 }
 
 const addGroup = async ({ name, permissions }: { name: string, permissions: string }) => {
-    const response = await useApi('companies/groups', 'POST', { name, permissions });
+    const response = await useApi('companies/groups/', 'POST', { name, permissions });
     return response;
 }
 
 const editGroup = async (id: number, { name, permissions }: { name?: string, permissions?: string }) => {
-    const response = await useApi(`companies/groups/${id}`, 'PUT', { name, permissions });
+    const response = await useApi(`companies/groups/${id}/`, 'PUT', { name, permissions });
     return response;
 }
 
 const deleteGroup = async (id: number) => {
-    const response = await useApi(`companies/groups/${id}`, 'DELETE');
+    const response = await useApi(`companies/groups/${id}/`, 'DELETE');
     return response;
 }
 
@@ -56,22 +56,22 @@ const getEmployees = async () => {
 }
 
 const getAnEmployee = async (id: number) => {
-    const response = await useApi<ApiGetEmployee>(`companies/employees/${id}`);
+    const response = await useApi<ApiGetEmployee>(`companies/employees/${id}/`);
     return response;
 }
 
 const addEmployee = async ({ name, email, password }: { name: string, email: string, password: string }) => {
-    const response = await useApi('companies/employees', 'POST', { name, email, password });
+    const response = await useApi('companies/employees/', 'POST', { name, email, password });
     return response;
 }
 
 const editEmployee = async (id: number, { name, email, groups }: { name?: string, email?: string, groups: string }) => {
-    const response = await useApi(`companies/employees/${id}`, 'PUT', { name, email, groups });
+    const response = await useApi(`companies/employees/${id}/`, 'PUT', { name, email, groups });
     return response;
 }
 
 const deleteEmployee = async (id: number) => {
-    const response = await useApi(`companies/employees/${id}`, 'DELETE');
+    const response = await useApi(`companies/employees/${id}/`, 'DELETE');
     return response;
 }
 
@@ -97,12 +97,12 @@ const editTask = async (
     id: number,
     { title, description, due_date, employee_id, status_id }: { title?: string, description?: string, due_date?: string, employee_id?: number, status_id?: number }
 ) => {
-    const response = await useApi<ApiGetTaskDetail>(`companies/tasks/${id}`, 'PUT', { title, description, due_date, employee_id, status_id });
+    const response = await useApi<ApiGetTaskDetail>(`companies/tasks/${id}/`, 'PUT', { title, description, due_date, employee_id, status_id });
     return response;
 }
 
 const deleteTask = async (id: number) => {
-    const response = await useApi(`companies/tasks/${id}`, 'DELETE');
+    const response = await useApi(`companies/tasks/${id}/`, 'DELETE');
     return response;
 }
 
