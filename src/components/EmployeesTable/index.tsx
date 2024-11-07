@@ -19,7 +19,7 @@ const EmployeesTable = ({employeesList, refreshList}:Props) => {
     const navigate = useNavigate();
 
     const handleEditEmployee = (id:number) => {
-        navigate(`/employee/edit/${id}`)
+        navigate(`/employees-edit/${id}`)
     }
 
     const handleDeleteEmployee = async (id:number) => {
