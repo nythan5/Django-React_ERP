@@ -28,6 +28,9 @@ const Employees = Loader(lazy (() => import ('src/content/pages/Employees/Employ
 const ADDEmployee = Loader(lazy (() => import ('src/content/pages/Employees/Add')));
 const EditEmployee = Loader(lazy (() => import ('src/content/pages/Employees/Edit')));
 
+// Task
+const Tasks = Loader(lazy (() => import('src/content/pages/Tasks/Tasks')));
+
 
 // Pages
 
@@ -35,7 +38,7 @@ const Overview = Loader(lazy(() => import('src/content/overview')));
 
 // Dashboards
 
-const Tasks = Loader(lazy(() => import('src/content/dashboards/Tasks')));
+// const Tasks = Loader(lazy(() => import('src/content/dashboards/Tasks')));
 
 // Applications
 
@@ -136,9 +139,21 @@ const routes: RouteObject[] = [
           },
           {
             path:'employees-edit/:id',
-            element: <EditEmployee/>
+            element: <EditEmployee/>,
           }
         ]
+      },
+      // Tasks
+      {
+        path:'',
+        element: <SidebarLayout/>,
+        children:[
+        {
+          path:'tasks',
+          element: <Tasks/>
+        }
+        ]
+
       },
       {
         path: '/',
